@@ -1,0 +1,5 @@
+.Pokedex-cards {
+    display: flex;
+    justify-content: space-evenly;  /* flexbox property */
+    flex-wrap: wrap;  /*its ok to wrap over to the next line */
+}
