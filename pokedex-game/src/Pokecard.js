@@ -6,12 +6,16 @@
 import React, { Component } from 'react';
 import './Pokecard.css';
 
-const POKI_API = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+const POKI_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/';
+
+let padToThree = (number) => (number = 999 ? `00${number}`.slice(-3) : number);
+//e.g. if number is greater than 999 return that, otherwise, add 2 zeros to the number and take the last 3 digits
+// 2 -> 002, take the last three which is 002
+// 24 -> 0024, you take 024
 
 class Pokecard extends Component {
     render() {
-        let imgSrc = `${POKI_API}${this.props.id}.png`;
-        // let imgSrc = `${POKI_API}${2}.png`;
+        let imgSrc = `${POKI_API}${padToThree(this.props.id)}.png`;
 
         return(
             <div className="Pokecard">
@@ -23,5 +27,5 @@ class Pokecard extends Component {
         );
     }
 }
-
+ 
 export default Pokecard
