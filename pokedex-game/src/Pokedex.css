@@ -4,6 +4,14 @@
     flex-wrap: wrap;  /*its ok to wrap over to the next line */
 }
 
-h1 {
+.Pokedex {
     text-align: center;
+}
+
+.Pokedex-winner {
+    color: green;
+}
+
+.Pokedex-loser {
+    color: rgb(206, 36, 106);
 }
