@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+![image](https://user-images.githubusercontent.com/8843680/144794492-5eab0965-bfd7-42c1-842b-ef76105e5c22.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application grabs 2 hands of 4 random cards each. Using reduce, calculate the total experience and display the winning hand.
 
 ## Available Scripts
 
