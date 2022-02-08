@@ -1,0 +1,28 @@
+.navbar-wrapper {
+  position: absolute;
+  left: 88%;
+  margin-top: 6vh;
+  .name {
+    font-weight: 600;
+  }
+  .links-wrapper {
+    button {
+      text-decoration: none;
+      padding: 10px;
+      font-family: "Open Sans";
+      opacity: 0.6;
+      transition: all 0.2s ease-in-out;
+      font-size: 12px;
+      background-color: transparent;
+      outline: none;
+      border: 0px;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .active {
+      color: black;
+    }
+  }
+}
