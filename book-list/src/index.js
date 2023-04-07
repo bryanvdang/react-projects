@@ -3,38 +3,27 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 
+const image = "./images/artOfGiving.jpg";
+const title = "The Subtle Art of not giving a F*ck";
+const author = "Mark Manson";
+
 function BookList() {
   return (
-    <section className="bookList">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+    <section className="booklist">
+      <Book author={author} title={title} image={image} />
+      <Book author={author} title={title} image={image} />
     </section>
   );
 }
 
-const Book = () => {
+const Book = (props) => {
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={props.image} alt={props.title} />
+      <h2>{props.title}</h2>
+      <h4>{props.author}</h4>
     </article>
   );
-};
-
-const Image = () => (
-  <img
-    src="https://m.media-amazon.com/images/I/81A5jQHA+lL._AC_UL320_.jpg"
-    alt="The subtle art of not giving a f*ck"
-  />
-);
-const Title = () => {
-  return <h2>The Subtle Art of not giving a F*ck</h2>;
-};
-const Author = () => {
-  return <h2>Mark Manson</h2>;
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
