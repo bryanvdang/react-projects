@@ -3,61 +3,26 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 
-const firstBook = {
-  image: "./images/artOfGiving.jpg",
-  title: "The Subtle Art of not giving a F*ck",
-  author: "Mark Manson",
-};
-
-const secondBook = {
-  image: "./images/youAreBadass.jpg",
-  title: "You are a Badass",
-  author: "Jen Sincero",
-};
+const books = [
+  {
+    image: "./images/artOfGiving.jpg",
+    title: "The Subtle Art of not giving a F*ck",
+    author: "Mark Manson",
+  },
+  {
+    image: "./images/youAreBadass.jpg",
+    title: "You are a Badass",
+    author: "Jen Sincero",
+  },
+];
 
 function BookList() {
   return (
     <section className="booklist">
-      <Book
-        author={firstBook.author}
-        title={firstBook.title}
-        image={firstBook.image}
-      />
-      <Book
-        author={secondBook.author}
-        title={secondBook.title}
-        image={secondBook.image}
-      />
-      <Book
-        author={firstBook.author}
-        title={firstBook.title}
-        image={firstBook.image}
-      />
-      <Book
-        author={secondBook.author}
-        title={secondBook.title}
-        image={secondBook.image}
-      />
-      <Book
-        author={firstBook.author}
-        title={firstBook.title}
-        image={firstBook.image}
-      />
-      <Book
-        author={secondBook.author}
-        title={secondBook.title}
-        image={secondBook.image}
-      />
-      <Book
-        author={firstBook.author}
-        title={firstBook.title}
-        image={firstBook.image}
-      />
-      <Book
-        author={secondBook.author}
-        title={secondBook.title}
-        image={secondBook.image}
-      />
+      {books.map((book) => {
+        const { image, title, author } = book;
+        return <Book image={image} title={title} author={author} />;
+      })}
     </section>
   );
 }
