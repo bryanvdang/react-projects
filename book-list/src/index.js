@@ -81,6 +81,7 @@ const books = [
 function BookList() {
   return (
     <div>
+      <EventExample />
       <h1 className="header">Bryan's Book List</h1>
       <section className="booklist">
         {books.map((book) => {
@@ -90,6 +91,10 @@ function BookList() {
     </div>
   );
 }
+
+const EventExample = () => {
+  return <h1>Event</h1>;
+};
 
 const Book = ({ image, title, author }) => {
   return (
