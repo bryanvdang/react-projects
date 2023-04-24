@@ -1,3 +1,8 @@
+import tour1Img from "../images/tour-1.jpeg";
+import tour2Img from "../images/tour-2.jpeg";
+import tour3Img from "../images/tour-3.jpeg";
+import tour4Img from "../images/tour-4.jpeg";
+
 const Tours = () => {
   return (
     <section className="section" id="tours">
@@ -10,7 +15,7 @@ const Tours = () => {
       <div className="section-center featured-center">
         <article className="tour-card">
           <div className="tour-img-container">
-            <img src="./images/tour-1.jpeg" className="tour-img" alt="" />
+            <img src={tour1Img} className="tour-img" alt="" />
             <p className="tour-date">august 26th, 2020</p>
           </div>
           <div className="tour-info">
@@ -37,7 +42,7 @@ const Tours = () => {
 
         <article className="tour-card">
           <div className="tour-img-container">
-            <img src="./images/tour-2.jpeg" className="tour-img" alt="" />
+            <img src={tour2Img} className="tour-img" alt="" />
             <p className="tour-date">october 1th, 2020</p>
           </div>
           <div className="tour-info">
@@ -62,7 +67,7 @@ const Tours = () => {
 
         <article className="tour-card">
           <div className="tour-img-container">
-            <img src="./images/tour-3.jpeg" className="tour-img" alt="" />
+            <img src={tour3Img} className="tour-img" alt="" />
             <p className="tour-date">september 15th, 2020</p>
           </div>
           <div className="tour-info">
@@ -87,7 +92,7 @@ const Tours = () => {
 
         <article className="tour-card">
           <div className="tour-img-container">
-            <img src="./images/tour-4.jpeg" className="tour-img" alt="" />
+            <img src={tour4Img} className="tour-img" alt="" />
             <p className="tour-date">december 5th, 2019</p>
           </div>
           <div className="tour-info">
