@@ -9,7 +9,8 @@ const AppProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState("a");
   const [cocktails, setCocktails] = useState([]);
 
-  const fetchDrinks = async () => {
+  // Only call fetchDrinks if something changes. Otherwise could cause infinite loop
+  const fetchDrinks = useCallback(async () => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchValue}`);
@@ -38,11 +39,11 @@ const AppProvider = ({ children }) => {
       console.log(error);
       setLoading(false);
     }
-  };
+  }, [searchValue]);
 
   useEffect(() => {
     fetchDrinks();
-  }, [searchValue]);
+  }, [searchValue, fetchDrinks]);
 
   return (
     <AppContext.Provider
