@@ -18,6 +18,18 @@ const AppProvider = ({ children }) => {
       const { drinks } = data;
       // if drinks is not equal to null e.g. no result for input
       if (drinks) {
+        const newCocktails = drinks.map((drink) => {
+          const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
+            drink;
+          return {
+            id: idDrink,
+            name: strDrink,
+            image: strDrinkThumb,
+            info: strAlcoholic,
+            glass: strGlass,
+          };
+        });
+        setCocktails(newCocktails);
       } else {
         setCocktails([]);
       }
