@@ -16,3 +16,13 @@ def getRoutes(request):
 def getProducts(request):
     return Response(products)
 #configure URLs for views
+
+
+@api_view(['GET'])
+def getProducts(request, pk):
+    product = None
+    for i in products:
+        if i['_id'] == pk:
+            product = i
+            break
+    return Response(product)
