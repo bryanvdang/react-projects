@@ -6,4 +6,5 @@ from . import views
 #list of urls
 urlpatterns = [
     path('', views.getRoutes, name="routes"),
+    path('products/', views.getProducts, name="products"),
 ]
