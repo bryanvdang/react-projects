@@ -9,7 +9,7 @@ function HomeScreen() {
   // useEffect get called everytime the component loads or when the state attribute gets updated
   useEffect(() => {
     async function fetchProducts() {
-      const { data } = await axios.get("http://127.0.0.1:8000/api/products/");
+      const { data } = await axios.get("/api/products/");
       setProducts(data);
     }
     fetchProducts();
