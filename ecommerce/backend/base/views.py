@@ -10,18 +10,19 @@ from .serializer import ProductSerializer
 
 #function based views to show all the logic here vs class based views you can't and its a little bit more expert level
 
+#TODO, update routes
 @api_view(['GET'])
 def getRoutes(request):
     return Response('Hello')
 
+# Call to get products on initial page load
 @api_view(['GET'])
 def getProducts(request):
     products = Product.objects.all(); #returns all products from our database
     serializer = ProductSerializer(products, many=True) #many=True, are we serializing one object or multiple. In this case, its multiple
     return Response(serializer.data)
-#configure URLs for views
 
-
+# Call to get individial product data
 @api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
