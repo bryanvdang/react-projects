@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 const HomeLayout = () => {
   return (
     <div>
-      <nav>HomeLayout</nav>
+      <nav>nav bar</nav>
       <Outlet />
     </div>
   );
