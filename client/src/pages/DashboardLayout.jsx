@@ -17,6 +17,7 @@ const DashboardLayout = () => {
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
+    console.log("showSidebar: ", showSidebar);
   };
 
   const logoutUser = () => {
