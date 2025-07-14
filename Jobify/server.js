@@ -2,6 +2,23 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 const app = express();
+import { nanoid } from "nanoid";
+
+let jobs = [
+  {
+    id: nanoid(),
+    company: "apple",
+    position: "front-end",
+    id: nanoid(),
+    company: "google",
+    position: "back-end",
+  },
+];
+
+app.get("/api/v1/jobs", (req, res) => {
+  res.status(200).json({ jobs });
+});
+
 import morgan from "morgan";
 
 if (process.env.NODE_ENV === "development") {
