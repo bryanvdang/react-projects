@@ -9,8 +9,25 @@ let jobs = [
   { id: nanoid(), company: "google", position: "back-end" },
 ];
 
+app.use(express.json());
+// GET ALL JOBS
 app.get("/api/v1/jobs", (req, res) => {
   res.status(200).json({ jobs });
+});
+
+// CREATE A JOB
+app.post("/api/v1/jobs", (req, res) => {
+  const { company, position } = req.body;
+  //check for the body
+  if (!company || !position) {
+    return res
+      .status(400)
+      .json({ msg: "please provide a company and position" });
+  }
+  const id = nanoid(10);
+  const job = { id, company, position };
+  jobs.push(job);
+  res.status(200).json({ job });
 });
 
 import morgan from "morgan";
@@ -19,7 +36,6 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
