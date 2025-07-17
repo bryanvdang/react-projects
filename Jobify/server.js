@@ -3,6 +3,20 @@ dotenv.config();
 import express from "express";
 const app = express();
 import { nanoid } from "nanoid";
+import morgan from "morgan";
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+app.post("/", (req, res) => {
+  console.log(req);
+  res.json({ message: "data received", data: req.body });
+});
 
 let jobs = [
   { id: nanoid(), company: "apple", position: "front-end" },
@@ -67,29 +81,22 @@ app.delete("/api/v1/jobs/:id", (req, res) => {
   if (!job) {
     return res.status(400).json({ msg: `no job with id ${id}` });
   }
-  // const newJobs = jobs.filter((job) => job.id !== id);
-  // jobs = newJobs;
-  jobs.pop(job);
-  res.status(200).json({ msg: "job deleted", job });
+  const newJobs = jobs.filter((job) => job.id !== id);
+  jobs = newJobs;
+  res.status(200).json({ msg: "job deleted" });
 });
 
-import morgan from "morgan";
-
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
+// Will trigger if method and URL are correct
+app.use("*", (req, res) => {
+  res.status(404).json({ msg: "404 not found" });
 });
 
-app.post("/", (req, res) => {
-  console.log(req);
-  res.json({ message: "data received", data: req.body });
+// will trigger if issue is internal aka with the code
+app.use((err, req, res, next) => {
+  res.status(500).json({ msg: "something went wrong....500" });
 });
 
 const port = process.env.PORT || 5100;
-
 app.listen(port, () => {
   console.log(`server is running on PORT ${port}...`);
 });
