@@ -40,6 +40,26 @@ app.get("/api/v1/jobs/:id", (req, res) => {
   res.status(200).json({ job });
 });
 
+// EDIT A JOB
+app.patch("/api/v1/jobs/:id", (req, res) => {
+  const { company, position } = req.body;
+  //check for the body
+  if (!company || !position) {
+    return res
+      .status(400)
+      .json({ msg: "please provide a company and position" });
+  }
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
+  if (!job) {
+    return res.status(400).json({ msg: `no job with id ${id}` });
+  }
+
+  job.company = company;
+  job.position = position;
+  res.status(200).json({ msg: "job modified", job });
+});
+
 import morgan from "morgan";
 
 if (process.env.NODE_ENV === "development") {
