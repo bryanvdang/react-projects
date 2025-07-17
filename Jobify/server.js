@@ -60,6 +60,19 @@ app.patch("/api/v1/jobs/:id", (req, res) => {
   res.status(200).json({ msg: "job modified", job });
 });
 
+// DELETE A JOB
+app.delete("/api/v1/jobs/:id", (req, res) => {
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
+  if (!job) {
+    return res.status(400).json({ msg: `no job with id ${id}` });
+  }
+  // const newJobs = jobs.filter((job) => job.id !== id);
+  // jobs = newJobs;
+  jobs.pop(job);
+  res.status(200).json({ msg: "job deleted", job });
+});
+
 import morgan from "morgan";
 
 if (process.env.NODE_ENV === "development") {
