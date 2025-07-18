@@ -31,6 +31,7 @@ app.use("*", (req, res) => {
 
 // will trigger if issue is internal aka with the code
 app.use((err, req, res, next) => {
+  console.log(err);
   res.status(500).json({ msg: "something went wrong....500" });
 });
 

@@ -1,3 +1,4 @@
+import "express-async-errors";
 import Job from "../models/JobModels.js";
 
 import { nanoid } from "nanoid";
@@ -12,7 +13,7 @@ export const getAllJobs = async (req, res) => {
 };
 
 export const createJob = async (req, res) => {
-  const job = await Job.create(req.body);
+  const job = await Job.create("try something");
   res.status(200).json({ job });
 };
 
