@@ -1,6 +1,5 @@
 import "express-async-errors";
 import Job from "../models/JobModels.js";
-
 import { nanoid } from "nanoid";
 
 let jobs = [
@@ -9,17 +8,20 @@ let jobs = [
 ];
 
 export const getAllJobs = async (req, res) => {
+  const jobs = await Job.find({});
   res.status(200).json({ jobs });
 };
 
 export const createJob = async (req, res) => {
-  const job = await Job.create("try something");
+  const job = await Job.create();
   res.status(200).json({ job });
 };
 
 export const getJob = async (req, res) => {
+  // get id from request params
   const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
+
+  const job = await Job.findById(id);
   if (!job) {
     return res.status(400).json({ msg: `no job with id ${id}` });
   }
