@@ -1,11 +1,5 @@
 import "express-async-errors";
 import Job from "../models/JobModels.js";
-import { nanoid } from "nanoid";
-
-let jobs = [
-  { id: nanoid(), company: "apple", position: "front-end" },
-  { id: nanoid(), company: "google", position: "back-end" },
-];
 
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({});
@@ -29,22 +23,16 @@ export const getJob = async (req, res) => {
 };
 
 export const updateJob = async (req, res) => {
-  const { company, position } = req.body;
-  //check for the body
-  if (!company || !position) {
-    return res
-      .status(400)
-      .json({ msg: "please provide a company and position" });
-  }
   const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
-  if (!job) {
+
+  const updatedJob = await Job.findByIdAndUpdate(id, req.body, { new: true });
+  // Without 'new', it would send the old job before the update. We don't want that so we use the new attribute
+
+  if (!updatedJob) {
     return res.status(400).json({ msg: `no job with id ${id}` });
   }
 
-  job.company = company;
-  job.position = position;
-  res.status(200).json({ msg: "job modified", job });
+  res.status(200).json({ msg: "job modified", job: updatedJob });
 };
 
 export const deleteJob = async (req, res) => {
