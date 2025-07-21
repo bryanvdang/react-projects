@@ -9,6 +9,9 @@ import mongoose from "mongoose";
 import jobRouter from "./routes/jobRouter.js";
 app.use(express.json());
 
+// middleware
+import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -30,10 +33,7 @@ app.use("*", (req, res) => {
 });
 
 // will trigger if issue is internal aka with the code
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ msg: "something went wrong....500" });
-});
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5100;
 
