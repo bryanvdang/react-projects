@@ -15,11 +15,4 @@ const withValidationErrors = (validateValues) => {
   ];
 };
 
-export const validateTest = withValidationErrors([
-  body("name")
-    .notEmpty()
-    .withMessage("Name is Required")
-    .isLength({ min: 3, max: 50 })
-    .withMessage("Name must be between 3 and 50 characters long")
-    .trim(),
-]);
+export const validateJobInput = withValidationErrors([]);
